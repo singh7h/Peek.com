@@ -1,7 +1,7 @@
 from Pages.BasePage import BasePage
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.action_chains import ActionChains
-from Utilites.Config import *
+from Utilities.Config import *
 
 
 class SearchPage(BasePage):
