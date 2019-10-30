@@ -1,9 +1,9 @@
 # **Automation for Peek.com**.
 - [ ] Designed the framework using Page Object Model design pattern.
-- [ ] Driver folder will have all the Web Driver.
+- [ ] Driver folder has chrome Web Driver.
 - [ ] Pages folder all pages related to Peek.com.
-- [ ] Test Folder will have all Test scripts.
-- [ ] Utilities folder will have all utilities files.
+- [ ] Test Folder has all Test scripts.
+- [ ] Utilities folder has config file.
 
 
 **Requirement**
