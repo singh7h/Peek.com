@@ -5,77 +5,101 @@ import pytest
 import time
 
 
-class TestHomePage:
+class TestPersonalityQuiz:
 
     @pytest.fixture()
     def setup(self):
         self.driver = driver_path("chrome")
         self.sp = SearchPage(self.driver)
 
-    def test_verify_search_destination(self, setup):
-        self.sp.open_url("https://www.peek.com")
-        time.sleep(2)
-        self.sp.search_destination("San Francisco")
-        wait_for_page_load()
-        self.sp.click_search_button()
-        wait_for_page_load()
-        self.sp.valid_region_in_banner("San Francisco")
-        wait_for_page_load()
-        url = self.driver.current_url
-        if "Francisco" in url:
-            print("Test_case is Pass")
-        else:
-            print("Test_case is Failed")
-
-    def test_display_all_classification_for_destination(self, setup):
+    def test_display_all_category_on_experience_search(self, setup):
         """
-        display all classification for destination
+        Verify all the category are display on experience  search for destination
         :param setup:
         :return:
         """
         self.sp.open_url("https://www.peek.com")
         time.sleep(2)
-        self.sp.search_destination("San Francisco")
+        self.sp.search_by_destination("San Francisco")
         wait_for_page_load()
-        self.sp.click_search_button()
+        self.sp.click_search_destination_button()
         wait_for_page_load()
         self.sp.valid_region_in_banner("San Francisco")
-        self.sp.display_all_classification()
+        self.sp.search_by_experience("Boat")
+        wait_for_page_load()
+        self.sp.click_search_experience_button()
+        wait_for_page_load()
+        self.sp.display_all_category()
 
-    def test_display_classification_on_experience_search(self, setup):
+    def test_select_category_on_experience_search(self, setup):
+        """
+        verify user can search category for experience user has searched
+        :param setup:
+        :return:
+        """
         self.sp.open_url("https://www.peek.com")
         time.sleep(2)
-        self.sp.search_destination("San Francisco")
+        self.sp.search_by_destination("San Francisco")
         wait_for_page_load()
-        self.sp.click_search_button()
+        self.sp.click_search_destination_button()
         wait_for_page_load()
         self.sp.valid_region_in_banner("San Francisco")
-        self.driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys("pizza")
-        self.driver.find_element_by_xpath("(//BUTTON[@type='submit'][text()='SEARCH'][text()='SEARCH'])[2]").click()
+        self.sp.search_by_experience("Boat")
         wait_for_page_load()
-        self.sp.display_all_classification()
+        self.sp.click_search_experience_button()
+        wait_for_page_load()
+        self.sp.display_all_category()
+        wait_for_page_load()
+        self.sp.select_category("Water Sports")
 
-    def test_display_search_on_experience_search(self, setup):
+    def test_select_category_and_display_category_result(self, setup):
+        """
+        verify user can select the category and display results for particular category
+        :param setup:
+        :return:
+        """
         self.sp.open_url("https://www.peek.com")
         time.sleep(2)
-        self.sp.search_destination("San Francisco")
+        self.sp.search_by_destination("San Francisco")
         wait_for_page_load()
-        self.sp.click_search_button()
+        self.sp.click_search_destination_button()
         wait_for_page_load()
         self.sp.valid_region_in_banner("San Francisco")
-        self.driver.find_element_by_xpath("(//INPUT[@type='text'])[6]").send_keys("Boat")
+        self.sp.search_by_experience("Boat")
         wait_for_page_load()
-        self.driver.find_element_by_xpath("(//BUTTON[@type='submit'][text()='SEARCH'][text()='SEARCH'])[2]").click()
+        self.sp.click_search_experience_button()
         wait_for_page_load()
-        self.sp.display_all_classification()
+        self.sp.display_all_category()
         wait_for_page_load()
-        print(self.driver.find_element_by_class_name("containers-Search-styles---activities").text)
-        self.driver.find_element_by_xpath("")
+        self.sp.select_category("Water Sports")
+        wait_for_page_load()
+        self.sp.display_result_for_selected_category()
 
-
-
-
-
+    def test_select_category_and_category_option(self, setup):
+        """
+        verify the user can select category and category option
+        :param setup:
+        :return:
+        """
+        self.sp.open_url("https://www.peek.com")
+        time.sleep(2)
+        self.sp.search_by_destination("San Francisco")
+        wait_for_page_load()
+        self.sp.click_search_destination_button()
+        wait_for_page_load()
+        self.sp.valid_region_in_banner("San Francisco")
+        self.sp.search_by_experience("Boat")
+        wait_for_page_load()
+        self.sp.click_search_experience_button()
+        wait_for_page_load()
+        self.sp.display_all_category()
+        wait_for_page_load()
+        self.sp.select_category("Water Sports")
+        wait_for_page_load()
+        self.sp.display_result_for_selected_category()
+        wait_for_page_load()
+        self.sp.select_option_from_category_result("Stand Up Paddle Board Rental in San Rafael")
+        wait_for_page_load()
 
     def teardown(self):
         self.driver.close()
