@@ -1,6 +1,5 @@
 from Utilities.Config import *
 from Pages.Search_Page import SearchPage
-from selenium.webdriver.common.by import By
 import pytest
 import time
 
