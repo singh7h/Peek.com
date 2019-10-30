@@ -25,6 +25,7 @@ class SearchPage(BasePage):
     category_option = "//H4[@class='components-ActivityRow-style---title padding-sm-top padding-sm-bottom margin-none']"
 
     def valid_search_option_displaying(self):
+        wait_for_page_load()
         try:
             if self.driver.find_element_by_xpath(self.input_destination).is_displayed():
                 print("Search option is Displaying and this step is failed")
@@ -34,6 +35,7 @@ class SearchPage(BasePage):
             print(str(e))
 
     def valid_from_date(self, date):
+        wait_for_page_load()
         try:
             if self.driver.find_element_by_xpath(self.from_date):
                 self.driver.find_element_by_xpath(self.from_date).clear()
@@ -45,6 +47,7 @@ class SearchPage(BasePage):
             print(str(e))
 
     def valid_to_date(self, date):
+        wait_for_page_load()
         try:
             if self.driver.find_element_by_xpath(self.to_date).is_displayed():
                 self.driver.find_element_by_xpath(self.to_date).send_keys(Keys.CLEAR)
@@ -56,6 +59,7 @@ class SearchPage(BasePage):
             print(str(e))
 
     def click_search_destination_button(self):
+        wait_for_page_load()
         try:
             self.driver.find_element_by_xpath(self.search_for_destination_button).click()
             print("The destination search button is clicked and this step is passed")
@@ -63,6 +67,7 @@ class SearchPage(BasePage):
             print(str(e))
 
     def click_search_experience_button(self):
+        wait_for_page_load()
         try:
             self.driver.find_element_by_xpath(self.search_for_experience_button).click()
             print("The experience search button is clicked and this step is passed")
@@ -70,6 +75,7 @@ class SearchPage(BasePage):
             print(str(e))
 
     def valid_region_in_banner(self, destination):
+        wait_for_page_load()
         try:
             if self.driver.find_element_by_xpath(self.banner_region_title):
                 banner_value = self.driver.find_element_by_xpath(self.banner_region_title).text
@@ -83,6 +89,7 @@ class SearchPage(BasePage):
             print(str(e))
 
     def search_by_destination(self, destination):
+        wait_for_page_load()
         try:
             if self.driver.find_element_by_xpath(self.input_destination):
                 self.driver.find_element_by_xpath(self.input_destination).send_keys(destination)
@@ -95,6 +102,7 @@ class SearchPage(BasePage):
             print(str(e))
 
     def search_by_experience(self, experience):
+        wait_for_page_load()
         try:
             if self.driver.find_element_by_xpath(self.input_experience):
                 self.driver.find_element_by_xpath(self.input_experience).send_keys(experience)
@@ -107,6 +115,7 @@ class SearchPage(BasePage):
             print(str(e))
 
     def display_all_search_result(self):
+        wait_for_page_load()
         try:
             if self.driver.find_element_by_xpath(self.search_result):
                 table = self.driver.find_element_by_xpath("//*[@id='content']/div/div[1]/div/div[2]/div/div[2]/div[3]")
@@ -118,7 +127,8 @@ class SearchPage(BasePage):
         except Exception as e:
             print(str(e))
 
-    def use_filter_sort_by(self,sort_option):
+    def use_filter_sort_by(self, sort_option):
+        wait_for_page_load()
         try:
             if self.driver.find_element_by_css_selector(self.sort_by):
                 self.driver.find_element_by_css_selector(self.sort_by).click()
@@ -138,6 +148,7 @@ class SearchPage(BasePage):
             print(str(e))
 
     def use_filter_price_by(self, filter_name):
+        wait_for_page_load()
         try:
             if self.driver.find_element_by_css_selector(self.filter_by_price):
                 self.driver.find_element_by_css_selector(self.filter_by_price).click()
@@ -150,6 +161,7 @@ class SearchPage(BasePage):
                     self.driver.find_element_by_xpath(self.checkbox_50_100).click()
                     print("Filter by price under 50-100 option is selected and this step is passed")
                 elif filter_name == "100-150":
+                    time.sleep(2)
                     self.driver.find_element_by_xpath(self.checkbox_100_250).click()
                     print("Filter by price under 100-150 option is selected and this step is passed")
                 elif filter_name == "over250":
@@ -161,6 +173,7 @@ class SearchPage(BasePage):
             print(str(e))
 
     def display_all_category(self):
+        wait_for_page_load()
         try:
             if self.driver.find_element_by_class_name("margin-xs-right").is_displayed():
                 table = self.driver.find_element_by_class_name("margin-xs-right")
@@ -177,6 +190,7 @@ class SearchPage(BasePage):
             print(str(e))
 
     def select_category(self, category):
+        wait_for_page_load()
         try:
             if self.driver.find_element_by_class_name("margin-xs-right").is_displayed():
                 table = self.driver.find_element_by_class_name("margin-xs-right")
@@ -195,6 +209,7 @@ class SearchPage(BasePage):
             print(str(e))
 
     def display_result_for_selected_category(self):
+        wait_for_page_load()
         try:
             if self.driver.find_element_by_class_name("containers-Search-styles---activities").is_displayed():
                 table = self.driver.find_element_by_class_name("containers-Search-styles---activities")
@@ -211,6 +226,7 @@ class SearchPage(BasePage):
             print(str(e))
 
     def select_option_from_category_result(self, category_option):
+        wait_for_page_load()
         try:
             if self.driver.find_element_by_class_name("containers-Search-styles---activities").is_displayed():
                 table = self.driver.find_element_by_class_name("containers-Search-styles---activities")
@@ -294,6 +310,8 @@ class SearchPage(BasePage):
             print(str(e))
 
     def select_number_ticket(self):
+        wait_for_page_load()
+        try:
             if self.driver.find_element_by_xpath("//div[@class='ember-view pro-form-quantity']"):
                 button = self.driver.find_element_by_xpath("//div[2]/div/div/div/form/div/div/div/div/div/span/a[2]")
                 flag = True
@@ -311,3 +329,5 @@ class SearchPage(BasePage):
                         flag = True
             else:
                 print("Time option is not showing")
+        except Exception as e:
+            print(str(e))

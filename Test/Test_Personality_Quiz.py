@@ -1,8 +1,6 @@
 from Utilities.Config import *
 from Pages.Search_Page import SearchPage
-from selenium.webdriver.common.by import By
 import pytest
-import time
 
 
 class TestPersonalityQuiz:
@@ -19,16 +17,11 @@ class TestPersonalityQuiz:
         :return:
         """
         self.sp.open_url("https://www.peek.com")
-        time.sleep(2)
         self.sp.search_by_destination("San Francisco")
-        wait_for_page_load()
         self.sp.click_search_destination_button()
-        wait_for_page_load()
         self.sp.valid_region_in_banner("San Francisco")
         self.sp.search_by_experience("Boat")
-        wait_for_page_load()
         self.sp.click_search_experience_button()
-        wait_for_page_load()
         self.sp.display_all_category()
 
     def test_select_category_on_experience_search(self, setup):
@@ -38,18 +31,12 @@ class TestPersonalityQuiz:
         :return:
         """
         self.sp.open_url("https://www.peek.com")
-        time.sleep(2)
         self.sp.search_by_destination("San Francisco")
-        wait_for_page_load()
         self.sp.click_search_destination_button()
-        wait_for_page_load()
         self.sp.valid_region_in_banner("San Francisco")
         self.sp.search_by_experience("Boat")
-        wait_for_page_load()
         self.sp.click_search_experience_button()
-        wait_for_page_load()
         self.sp.display_all_category()
-        wait_for_page_load()
         self.sp.select_category("Water Sports")
 
     def test_select_category_and_display_category_result(self, setup):
@@ -59,20 +46,13 @@ class TestPersonalityQuiz:
         :return:
         """
         self.sp.open_url("https://www.peek.com")
-        time.sleep(2)
         self.sp.search_by_destination("San Francisco")
-        wait_for_page_load()
         self.sp.click_search_destination_button()
-        wait_for_page_load()
         self.sp.valid_region_in_banner("San Francisco")
         self.sp.search_by_experience("Boat")
-        wait_for_page_load()
         self.sp.click_search_experience_button()
-        wait_for_page_load()
         self.sp.display_all_category()
-        wait_for_page_load()
         self.sp.select_category("Water Sports")
-        wait_for_page_load()
         self.sp.display_result_for_selected_category()
 
     def test_select_category_and_category_option(self, setup):
@@ -82,24 +62,16 @@ class TestPersonalityQuiz:
         :return:
         """
         self.sp.open_url("https://www.peek.com")
-        time.sleep(2)
         self.sp.search_by_destination("San Francisco")
-        wait_for_page_load()
         self.sp.click_search_destination_button()
-        wait_for_page_load()
         self.sp.valid_region_in_banner("San Francisco")
         self.sp.search_by_experience("Boat")
-        wait_for_page_load()
         self.sp.click_search_experience_button()
-        wait_for_page_load()
         self.sp.display_all_category()
-        wait_for_page_load()
         self.sp.select_category("Water Sports")
-        wait_for_page_load()
         self.sp.display_result_for_selected_category()
-        wait_for_page_load()
         self.sp.select_option_from_category_result("Stand Up Paddle Board Rental in San Rafael")
-        wait_for_page_load()
+
 
     def teardown(self):
         self.driver.close()

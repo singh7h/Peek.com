@@ -1,6 +1,5 @@
 from Utilities.Config import *
 from Pages.Search_Page import SearchPage
-from selenium.webdriver.common.by import By
 import pytest
 import time
 
@@ -47,13 +46,9 @@ class TestHomePage:
         """
         print("The test case start: test_verify_search_destination_is_displaying_in_url_and_banner")
         self.sp.open_url("https://www.peek.com")
-        time.sleep(2)
         self.sp.search_by_destination("Minneapolis")
-        wait_for_page_load()
         self.sp.click_search_destination_button()
-        wait_for_page_load()
         self.sp.valid_region_in_banner("Minneapolis")
-        wait_for_page_load()
         url = self.driver.current_url
         if "Minneapolis" in url:
             print("Test_case is Pass")
@@ -69,11 +64,8 @@ class TestHomePage:
         """
         print("The test case start: test_verify_search_experience_without_filters")
         self.sp.open_url("https://www.peek.com")
-        wait_for_page_load()
         self.sp.search_by_destination("Minneapolis")
-        wait_for_page_load()
         self.sp.click_search_destination_button()
-        wait_for_page_load()
         self.sp.valid_region_in_banner("Minneapolis")
         self.sp.display_all_search_result()
         print("The test case ended: test_verify_search_experience_without_filters")
@@ -86,14 +78,10 @@ class TestHomePage:
         """
         print("The test case start: test_verify_search_experience_without_filters")
         self.sp.open_url("https://www.peek.com")
-        wait_for_page_load()
         self.sp.search_by_destination("Minneapolis")
-        wait_for_page_load()
         self.sp.click_search_destination_button()
-        wait_for_page_load()
         self.sp.valid_region_in_banner("Minneapolis")
         self.sp.use_filter_sort_by("mostpopular")
-        wait_for_page_load()
         self.sp.display_all_search_result()
         print("The test case ended: test_verify_search_experience_without_filters")
 
@@ -105,14 +93,10 @@ class TestHomePage:
         """
         print("The test case start: test_verify_search_experience_with_sort_by_lowest_price")
         self.sp.open_url("https://www.peek.com")
-        wait_for_page_load()
         self.sp.search_by_destination("Minneapolis")
-        wait_for_page_load()
         self.sp.click_search_destination_button()
-        wait_for_page_load()
         self.sp.valid_region_in_banner("Minneapolis")
         self.sp.use_filter_sort_by("lowestprice")
-        wait_for_page_load()
         self.sp.display_all_search_result()
         print("The test case ended: test_verify_search_experience_with_sort_by_lowest_price")
 
@@ -124,16 +108,10 @@ class TestHomePage:
         """
         print("The test case start: test_verify_search_experience_with_under50_price_filters")
         self.sp.open_url("https://www.peek.com")
-        self.sp.open_url("https://www.peek.com")
-        wait_for_page_load()
         self.sp.search_by_destination("Minneapolis")
-        wait_for_page_load()
         self.sp.click_search_destination_button()
-        wait_for_page_load()
         self.sp.valid_region_in_banner("Minneapolis")
-        wait_for_page_load()
         self.sp.use_filter_price_by("under50")
-        wait_for_page_load()
         self.sp.display_all_search_result()
         print("The test case ended: test_verify_search_experience_with_under50_price_filters")
 
@@ -145,15 +123,10 @@ class TestHomePage:
         """
         print("The test case start: test_verify_search_experience_with_50_to_100_price_filters")
         self.sp.open_url("https://www.peek.com")
-        wait_for_page_load()
         self.sp.search_by_destination("Minneapolis")
-        wait_for_page_load()
         self.sp.click_search_destination_button()
-        wait_for_page_load()
         self.sp.valid_region_in_banner("Minneapolis")
-        wait_for_page_load()
         self.sp.use_filter_price_by("50-100")
-        wait_for_page_load()
         self.sp.display_all_search_result()
         print("The test case ended: test_verify_search_experience_with_50_to_100_price_filters")
 
@@ -165,15 +138,10 @@ class TestHomePage:
         """
         print("The test case start: test_verify_search_experience_with_100_to_150__price_filters")
         self.sp.open_url("https://www.peek.com")
-        wait_for_page_load()
         self.sp.search_by_destination("Minneapolis")
-        wait_for_page_load()
         self.sp.click_search_destination_button()
-        wait_for_page_load()
         self.sp.valid_region_in_banner("Minneapolis")
-        wait_for_page_load()
         self.sp.use_filter_price_by("100-150")
-        wait_for_page_load()
         self.sp.display_all_search_result()
         print("The test case ended: test_verify_search_experience_with_100_to_150__price_filters")
 
@@ -185,15 +153,10 @@ class TestHomePage:
         """
         print("The test case start: test_verify_search_experience_with_over250_price_filters")
         self.sp.open_url("https://www.peek.com")
-        wait_for_page_load()
         self.sp.search_by_destination("Minneapolis")
-        wait_for_page_load()
         self.sp.click_search_destination_button()
-        wait_for_page_load()
         self.sp.valid_region_in_banner("Minneapolis")
-        wait_for_page_load()
         self.sp.use_filter_price_by("over250")
-        wait_for_page_load()
         self.sp.display_all_search_result()
         print("The test case ended: test_verify_search_experience_with_over250_price_filters")
 
