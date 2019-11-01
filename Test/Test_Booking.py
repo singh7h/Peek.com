@@ -53,7 +53,7 @@ class TestBooking:
         self.sp.select_date_from_widget("27")
         self.sp.select_time_available_from_widget("11:00am")
 
-    def test_incresing_number_ticket_prevent_booking(self, setup):
+    def test_increasing_number_ticket_prevent_booking(self, setup):
         """
         verify increasing the number of selected tickets beyond the
         availability prevents me from booking that timeslot
