@@ -1,7 +1,8 @@
 from selenium import webdriver
 
-def Drivers(driver):
+
+def drivers(driver):
     if driver.lower() == "chrome":
-        return webdriver.Chrome("..//Webdriver//chromedriver")
+        return webdriver.Chrome("/Users/harmansingh/PycharmProjects/Tesla_site/Webdriver/chromedriver")
     else:
         print("No Driver")
